@@ -45,28 +45,29 @@ public class InputsTest extends BaseTest {
         assertEquals(inputValue3, "123", "Arrow up doesn't work");
     }
 
+
     @Test
-    public void canInputOrNotContainLetters() {
+    public void canInputLettersWithHelpOfArrowUp() {
         driver.get("http://the-internet.herokuapp.com/inputs");
         WebElement input = driver.findElement(By.tagName("input"));
-        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        for (String i : letters.split("")) {
-            input.sendKeys(i);
-            String inputValue = input.getAttribute("value");
-            input.clear();
+        String letters = "a b c d  f g h i j k l m n o p q r s t u v w x y z ";
+        for (String letter : letters.split(" ")) {
+            input.sendKeys(letter);
+            String value = input.getAttribute("value");
+            assertEquals(value, "", "input letter");
         }
+
     }
 
     @Test
-    public void canInputOrNotContainSymbols() {
+    public void canInputSymbolsWithHelpOfArrowUp() {
         driver.get("http://the-internet.herokuapp.com/inputs");
         WebElement input = driver.findElement(By.tagName("input"));
-        String letters = "~!@#$%^&*()_+=-{}|][;:'/?*-.,";
-        for (String i : letters.split("")) {
-            input.sendKeys(i);
-            String inputValue = input.getAttribute("value");
-
-            input.clear();
+        String number = "! @ # $ % ^ & * ( )  _ = / * - { | }  ] [ < ? > . ,";
+        for (String letter : number.split(" ")) {
+            input.sendKeys(letter);
+            String value = input.getAttribute("value");
+            assertEquals(value, "", "input letter");
         }
     }
 }
