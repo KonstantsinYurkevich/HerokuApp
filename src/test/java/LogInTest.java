@@ -14,9 +14,8 @@ public class LogInTest extends BaseTest {
         assertEquals(userName.getAttribute("value"), "tomsmith", "username are not equals");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
         userName.submit();
-
         String massage = driver.findElement(By.id("flash")).getText();
-        assertEquals(massage, "You logged into a secure area!\n"+"×", "no login");
+        assertEquals(massage, "You logged into a secure area!\n" + "×", "no login");
 
     }
 }
